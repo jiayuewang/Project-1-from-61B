@@ -1,50 +1,38 @@
-# Project-1-from-61B
-Color Images, Edge Detection, and Run-Length Encodings
-Part I:  Image Blurring and Edge Detection
-==========================================
-This part is worth 40% of your total score.  (8 points out of 20).
-Implement a class called PixImage that stores a color image.  The PixImage
-class will include methods for reading or changing the image’s pixels.  It will
-also include a method for blurring an image and a method for detecting edges in
-an image.  We have provided a skeleton file named PixImage.java that includes
-prototypes for the public methods the class offers.  You are required to
-provide implementations of all these methods.
+# Query Me
+This project is a sql query program through command line
 
+### Prerequisites
+Make sure you already install python version 2.7 and install pip
 
-readme
-3
-Part II:  Converting a Run-Length Encoding to an Image
-======================================================
-This part is worth 25% of your total score.  (5 points out of 20).
-Part II(a):  Implement two simple constructors for RunLengthEncodings.  One
-constructs a run-length encoding of a jet black image.  The other constructs
-a run-length encoding based on four arrays provided as parameters to the
-constructor.  These arrays tell you exactly what runs your run-length encoding
-should contain, so you are simply converting arrays to a linked list.  (Read
-the prototype in RunLengthEncoding.java.)
-A large number of large image files can consume a lot of disk space.  Some
-PixImages can be stored more compactly if we represent them as "run-length
-encodings."  Imagine taking all the rows of pixels in the image, and connecting
-them into one long strip.  Think of the pixels as being numbered thusly:
+### Installing
+run commands below on terminal
+```
+sudo pip install sqlparse
+sudo pip install pandas
+```
+### Running the project
 
-Part III:  Converting an Image to a Run-Length Encoding
-=======================================================
-This part is worth 25% of your total score.  (5 points out of 20).
-Part IV:  Changing a Pixel in a Run-Length Encoding
-===================================================
-The last part is the hardest, but it is only worth 10% of the total score
-(2 points out of 20), so don’t panic if you can’t finish it.
-Write a RunLengthEncoding constructor that takes a PixImage object as its sole
-parameter and converts it into a run-length encoding of the PixImage.
-Implement the setPixel() method of the RunLengthEncoding class, which is
-similar to the setPixel() method of the PixImage class.  However, this code is
-much trickier to write.  Observe that setPixel() can lengthen, or even shorten,
-an existing run-length encoding.  To change a pixel in a run-length encoded
-image, you will need to find the right run in the linked list, and sometimes
-break it apart into two or three runs.  If the changed pixel is adjacent to
-other pixels of identical color, you should consolidate runs to keep memory use
-down.  (Your check() method ensures that your encoding is as compact as
-possible.)
-The fields of the PixImage class MUST be private, so the RunLengthEncoding
-constructor will rely upon the getWidth(), getHeight(), getRed(), getGreen(),
-and getBlue() methods.
+To run script:
+```
+$ python2 mysql.py
+```
+
+When you see "Input a query or input exit:", please input a query statement or type 'exit' to exit: <br />
+```
+$ SELECT * FROM movies.csv WHERE year=2015
+$ exit<br />
+```
+Example: <br />
+```
+$ SELECT movie_title, title_year, imdb_score FROM movies.csv WHERE movie_title LIKE '%Kevin%' AND imdb_score > 7
+```
+```
+$ SELECT A1.Year, A1.Film, A1.Award, A1.Name, A2.Award, A2.Name FROM oscars.csv A1, oscars.csv A2 WHERE A1.Film = A2.Film AND A1.Film <> '' AND A1.Winner = 1 AND A2.Winner=1 AND A1.Award > A2.Award AND A1.Year > '2010'
+```
+```
+$ SELECT title_year, movie_title, Award, imdb_score, movie_facebook_likes FROM movies.csv M, oscars.csv A WHERE M.movie_title = A.Film AND A.Winner = 1 AND (M.imdb_score < 6 OR M.movie_facebook_likes < 10000)
+```
+```
+$ SELECT M.movie_title, M.title_year, M.imdb_score, A1.Name, A1.Award, A2.Name, A2.Award FROM movies.csv M, oscars.csv A1, oscars.csv A2 WHERE M.movie_title = A1.Film AND M.movie_title = A2.Film AND A1.Award = 'Actor' AND A2.Award = 'Actress'
+```
+
